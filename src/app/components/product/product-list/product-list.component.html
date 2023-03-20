@@ -1,0 +1,32 @@
+<div class="fieldset">
+    <div class="sideabar" *ngIf="productList">
+        <div class="product-category">
+            <h4 class="button-71" *ngFor="let cat of categoryList" (click)="getProductByCategory(cat)" >{{ cat | uppercase }}</h4>
+        </div>
+    </div>
+
+    <div class="main-section">
+        <div class="container-product" role="button">
+            <div class="product-wrapper" *ngFor="let product of productList">
+                <div class="product-card" routerLink="/product-detail/{{product.id}}">
+                    <div class="p-img">
+                        <img src="{{ product.image }}" width="120px" height="180px" alt="">
+                    </div>
+                    <div class="p-details" style="width: 100%;">
+                        <h5 class="mt-3 mb-3 product-title">{{ product.title | truncate:[25, '...'] }}</h5>
+                        <span class="mt-3 mb-3">{{ product.category }}</span>
+                        <h4 class="mt-3 mb-3">{{ product.price | currency : 'INR' }}</h4>
+                        
+                    </div>
+                </div>
+                <div class="btn">
+                    <button (click)="addToCart(product)" class="button-87" role="button">Add to cart</button>
+                </div>
+            </div>
+        </div>    
+    </div>
+    
+</div>
+
+
+

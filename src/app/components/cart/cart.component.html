@@ -1,0 +1,19 @@
+<div class="product-cart" *ngIf="cartItems">
+    <ul>
+        <li *ngFor="let item of cartItems">
+            <img class="card-img-top" src="{{item.image}}" alt="Card image cap">
+            {{item.title}}
+            <span>{{item.price  | currency:'INR'}}</span>
+            <button type="button" class="close" aria-label="Remove Item" (click)="removeItemFromCart(item.id)">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </li>
+    </ul>
+    <div class="cart-total">
+        <p><button type="button" [disabled]="cartItems.length === 0" class="btn btn-outline-primary btn-sm" (click)="emptyCart()">Clear Cart</button></p>
+        <p class="text-right">
+            <button type="button" [disabled]="cartItems.length === 0" class="btn btn-outline-primary btn-sm" (click)="setCartModel()" routerLink="/checkout">Checkout</button>
+        </p>
+    </div>
+</div>
+

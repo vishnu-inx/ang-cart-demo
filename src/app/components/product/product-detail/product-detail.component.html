@@ -1,0 +1,25 @@
+<div class="main-section">
+    <div class="container-product" role="button">
+        <div class="product-wrapper" *ngIf="product.image">
+            <div class="product-card">
+                <div class="p-img">
+                    <img ngSrc="{{product.image}}" width="450" height="600" />
+                </div>
+                <div class="p-details" style="width: 100%;">
+                    <h5 class="mt-5 mb-5 product-title">{{ product?.title }}</h5>
+                    <span class="mt-5 mb-5">{{ product?.category }}</span>
+                    <p class="mt-5">{{ product?.description }}</p>
+                    <span><label for="">Rating : </label> <strong> {{ product?.rating?.rate }}</strong>  </span>
+                    <h4 class="mt-5 mb-5">{{ product?.price | currency : 'INR' }}</h4>
+                    <div class="quantity">
+                         <input type="number" min="1" [(ngModel)]="quantity" value="{{ quantity }}"/>
+                    </div>     
+                </div>
+            </div>
+            <div class="btn">
+                <button routerLink="/checkout" class="button-87" style="margin-right: 20px;">Checkout</button>
+                <button (click)="addToCart(product)" class="button-87" role="button">Add to cart</button>
+            </div>
+        </div>
+    </div>    
+</div>
